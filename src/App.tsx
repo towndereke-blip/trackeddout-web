@@ -1,16 +1,21 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import Project from "./pages/Project";
+import React from 'react';
+import './index.css';
+import { Layout } from './components/Layout';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Project from './pages/Project';
 
-export default function App() {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/project/:id" element={<Project />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Layout>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/project/:id' element={<Project />} />
+                </Routes>
+            </Layout>
+        </Router>
+    );
+};
+
+export default App;
